@@ -1,5 +1,6 @@
 # kitsuyahtzee
 yahtzee.m
+
 Problem Formulation
 The dice game of Yahtzee is played with five regular six-sided dice. The players throw the dice one at a
 time and try to get different combinations of die values. The highest number of points is given for five of-
@@ -10,6 +11,7 @@ to obtain five-of-a-kind using a certain number of throws? What is the average n
 description of the expected value in Section 3) needed to obtain five-of-a-kind? One way of measuring the
 variations in the number of throws (how common it is to be close to the expected value) is the variance,
 which is also described in Section 3.
+
 1.1 Presentation
 The problem must be solved as an individual project. You are not allowed to share or show MATLAB code
 or notes to students from other students. It is, however, permitted to discuss the project with other
@@ -19,6 +21,7 @@ of-a kind. The function should draw a histogram over the number of throws that a
 Yahtzee should call other functions, that you’ve written yourself, to solve certain subproblems.
 • You will need to turn in several files for this project. These include your .m files, resulting histograms,
 and a report.
+
 2 Suggested Solution Outline
 Begin by reading through the whole document so that you understand the problem specification and our
 suggested way to divide the problem into smaller subproblems.
@@ -29,6 +32,7 @@ that you write small functions that each solve a subproblem, this doesn’t mean
 to use (call) all these small functions to solve the original problem. Some functions take care of such small
 pieces that, once you have it working, it is better to copy the code into a new larger function than to call
 the small function.
+
 Note that this solution outline is intended for students with little or no previous programming experience.
 An experienced programmer would probably, based on previous experience, divide the problem into
 different and/or fewer parts. If you consider yourself an experienced programmer and think that you have
@@ -42,12 +46,14 @@ Write a function that simulates a throw with a given number of dice and returns 
 of dice be an input argument to the function and return the result as a vector with the results of the throw.
 Hint: Create a vector with random numbers in the interval 0 to 1, one number for each die, multiply by 6,
 and round upwards. Or, use the randi() function to create your vector.
+
 2.2 Count the Number of Each Outcome
 Write a function that takes the outcome of a throw with five dice as an argument and returns a vector with
 the number of ones, twos, and so on. Ask the instructor for help if you get stuck here for too long!
 Example:
 • The outcome [1 4 2 2 4] should yield [1 2 0 2 0 0] (one one, two twos, no threes, two fours, and no fives or
 sixes).
+
 2.3 Find Out Which Outcome is Most Common
 Modify the function from the step 2.2 to return the most common outcome (ones, twos, threes, ...). The
 vector previously returned should come in handy. If there are two pairs in the result, just return one of
@@ -56,6 +62,7 @@ Test the function and make sure that it works properly!
 Examples:
 • The outcome [4 5 4 4 1] should yield 4 (four is the most common outcome).
 • The outcome [1 4 2 2 4] should yield either 2 or 4 (you decide).
+
 2.4 Find the Dice to Throw Again
 With the knowledge of the most common outcome, it is time to decide which dice to save and which to
 throw again. There are two ways to do this:
@@ -81,6 +88,7 @@ now, display and study the result after each throw.
 Be careful with the situation when you first get two-of-a-kind in one throw and on the next throw you get
 three of another kind, then you should save the one with three-of-a-kind instead of the one you saved at
 first.
+
 2.6 Monte Carlo Simulation
 A Monte Carlo simulation means that that you perform an experiment many times in order to get an idea
 of how the underlying probability function looks. Write a (new) function that throws dice until you have
@@ -89,6 +97,7 @@ otherwise you need to optimize your code. It may be good to write out something 
 progress. Store the number of throws needed in each experiment in a vector. Plot a histogram to illustrate
 the result (i.e., the number of throws needed). The histogram bins should have width 1. The function
 should take the number of experiments as an input argument.
+
 2.7 Compute Estimates of the Expected Value and Variance
 Modify the function to also return estimations of the expected value and variance for the number of
 throws. The average value is an estimate of the expected value, and a formula to estimate the variance is
@@ -96,6 +105,7 @@ given in Section 3. In this case xi is the number of throws needed in experiment
 experiments. Ask the instructor if you cannot work out how to use the formulas!
 Section 3 also presents the theoretical expected value and variance. Run a large number of experiments
 to test that the estimates from your function are close to the exact values!
+
 2.8 Compare with the Analytic Solution
 Extend your function to also plot the analytic probability function in the same figure as the histogram from
 the Monte Carlo simulations (Hint: Plot the histogram first and then the probability function by using hold
@@ -116,12 +126,14 @@ expected value mhat and the variance s2hat.
 where the input, experiments, is the number of experiments in the Monte Carlo simulation (the number
 of five-of-a kind runs that are simulated). Compare the behavior for a small and large number of
 experiments, respectively.
+
 2.9 Report and Code Preparation
 • In addition to the main script, you need to have at least two functions in your code
 • All file names need to include your access ID
 • Functions and variables need to have descriptive names
 • There should be a reasonable amount of comments in the code
 • All figures should be self-explanatory
+
 3 Useful Facts
 Probability Theory: Definitions
 Let X denote the outcome (result) of a die throw (X is a so called random or stochastic variable). P denotes
